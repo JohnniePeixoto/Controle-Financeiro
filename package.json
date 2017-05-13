@@ -1,0 +1,22 @@
+{
+  "name": "controlefinanceiro",
+  "version": "1.0.0",
+  "description": "Sistema de Controle Financeiro",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JohnnieW",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-bootstrap": "^2.5.0",
+    "body-parser": "^1.17.1",
+    "consign": "^0.1.4",
+    "express": "^4.15.2",
+    "gulp": "^3.9.1",
+    "http": "0.0.0",
+    "mongoose": "^4.9.7",
+    "ui-router": "^1.0.0-alpha.3"
+  }
+}

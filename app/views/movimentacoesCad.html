@@ -1,0 +1,85 @@
+<h2>Cadastro de Movimentação</h2>
+<div class="row" style="margin: 0 auto; width:80%;">
+    <form class="form-horizontal" role="form">
+        
+        <div class="form-group">
+            <div class="btn-group col-sm-12 col-sm-offset-4 mb-2">
+                <label class="btn btn-default col-sm-2" ng-model="vm.tipo" value="receita" uib-btn-radio="'Left'" ng-selected="vm.tipo=='receita'">Receita</label>
+                <label class="btn btn-default col-sm-2" ng-model="vm.tipo" value="despesa" uib-btn-radio="'Right'" ng-selected="vm.tipo=='despesa'">Despesa</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="btn-group col-sm-12 col-sm-offset-4">
+                <label class="btn btn-default col-sm-2" ng-model="vm.tipoFrequencia" value="fixa" uib-btn-radio="'Left'">Fixa</label>
+                <label class="btn btn-default col-sm-2" ng-model="vm.tipoFrequencia" value="parcela" uib-btn-radio="'Right'">Parcelada</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <label for="frequencia" class="control-label col-sm-2">Frequência</label>
+                <div class="col-sm-4">
+                    <select ng-model="vm.frequencia" class="form-control" id="frequencia">
+                        <option>Dia</option>
+                        <option>Semana</option>
+                        <option>Mês</option>
+                        <option>Ano</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <div if="tipoFrequencia == 'parcela'">
+                    <label for="parcelas" class="control-label col-sm-2" ><abbr title="Quantidade">Qtd</abbr> de Parcelas</label>
+                    <div class="col-sm-4">
+                        <input ng-model="vm.qtdParcelas" type="text" class="form-control col-sm-2" id="parcelas">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <label for="descricao" class="control-label col-sm-2">Descrição</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" ng-model="descricao" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <label for="valor" class="control-label col-sm-2">Valor</label>
+                <div class="input-group col-sm-4">
+                    <span class="input-group-addon">R$</span>
+                    <input ng-model="vm.valor" type="Number" class="form-control" id="valor">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <label for="data" class="control-label col-sm-2">Data</label>
+                <div class="col-sm-4">
+                    <input ng-model="vm.data" type="text" class="form-control" placeholder="dd/mm/YYYY" id="data">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12 col-sm-offset-2">
+                <label for="categoria" class="control-label col-sm-2">Categoria</label>
+                <div class="col-sm-4">
+                    <select ng-model="vm.categoria" class="form-control" id="categoria">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-primary">Salvar</button>
+            <a ui-sref="movimentacoesList" type="button" class="btn btn-default">Cancelar</a>
+        </div>
+    </form>
+</div>
