@@ -17,7 +17,12 @@ angular.module("myApp", ['ui.router', 'ui.bootstrap'])
                     controller: "movimentacoesListCtrl as vm"
                 })
                 .state('movimentacoesCad', {
-                    url: '/movimentacoes/cadastro/:tipo',
+                    url: '/movimentacoes/cadastro/',
+                    templateUrl: './views/movimentacoesCad.html',
+                    controller: "movimentacoesCadCtrl as vm"
+                })
+                .state('movimentacoesEdit', {
+                    url: '/movimentacoes/:id',
                     templateUrl: './views/movimentacoesCad.html',
                     controller: "movimentacoesCadCtrl as vm"
                 })
@@ -27,9 +32,5 @@ angular.module("myApp", ['ui.router', 'ui.bootstrap'])
                     controller: "categoriasCtrl as vm"
                 })
         })
-
-    .controller('mainCtrl', function(){
-        // console.log("mainCtrl");
-    });
 })();
 

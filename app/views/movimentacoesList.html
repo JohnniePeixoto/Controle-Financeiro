@@ -1,5 +1,26 @@
 <h2>Movimentações</h2>
 
+    
+    <div class="btn-group col-sm-2">
+        <a ui-sref="movimentacoesCad" class="btn btn-primary dropdown-toggle">
+            <span class="glyphicon glyphicon-plus"></span> Cadastro
+            <!--<span class="caret"></span>-->
+        </a>
+    </div>
+    <!--    <ul class="dropdown-menu" role="menu">
+            <li>
+                <a ui-sref="movimentacoesCad?tipo=despesa" class="">
+                    <span class="glyphicon glyphicon-plus"></span> Despesa
+                </a>
+            </li>
+            <li>
+                <a ui-sref="movimentacoesCad?receita" class="">
+                    <span class="glyphicon glyphicon-plus"></span> Receita
+                </a>
+            </li>
+        </ul>
+    </div>-->
+
 <div class="row">
     <table class="table table-striped">
         <thead>
@@ -14,11 +35,11 @@
         <tbody ng-repeat="item in vm.lista">
             <tr ng-class="item.tipo == 'receita' ? positive : negative">
                 <td>{{item.descricao}}</td>
-                <td>{{item.valor}}</td>
-                <td>{{item.data}}</td>
-                <td>{{item.categoria.descricao}}</td>
+                <td>{{item.valor | currency}}</td>
+                <td>{{item.data | date}}</td>
+                <td>{{item.i_categorias.descricao}}</td>
                 <td class="text-right">
-                    <a class="btn btn-link" ng-click="vm.edit($index)">
+                    <a class="btn btn-link" ui-sref="movimentacoesEdit({id:item._id})">
                         <i class="glyphicon glyphicon-pencil" aria-hidden="true" title="Editar"></i>
                     </a>
                     <button type="button" class="btn btn-link" ng-click="vm.remove(item)" title="Remover">

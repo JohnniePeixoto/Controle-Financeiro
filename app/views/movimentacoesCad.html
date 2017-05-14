@@ -1,21 +1,27 @@
-<h2>Cadastro de Movimentação</h2>
+<h2>{{vm.title}}</h2>
 {{vm.movimentacao}}
 <div class="row" style="margin: 0 auto; width:80%;">
     <form name="form" class="form-horizontal" role="form" novalidate>
         
         <div class="form-group">
             <div class="btn-group col-sm-12 col-sm-offset-4 mb-2">
-                <label class="btn btn-default col-sm-2" ng-model="vm.movimentacao.tipo" uib-btn-radio="'receita'" ng-selected="vm.movimentacao.tipo=='receita'" required>Receita</label>
                 <label class="btn btn-default col-sm-2" ng-model="vm.movimentacao.tipo" uib-btn-radio="'despesa'" ng-selected="vm.movimentacao.tipo=='despesa'" required>Despesa</label>
+                <label class="btn btn-default col-sm-2" ng-model="vm.movimentacao.tipo" uib-btn-radio="'receita'" ng-selected="vm.movimentacao.tipo=='receita'" required>Receita</label>
             </div>
         </div>
         
         <div class="form-group">
             <div class="col-sm-4 col-sm-offset-4">
                 <div class="btn-group btn-group-justified">
-                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'unica'" required>Única</label>
-                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'fixa'" required>Fixa</label>
-                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'parcelada'" required>Parcelada</label>
+                    <label 
+                        class="btn btn-default"
+                        ng-model="vm.movimentacao.tipoFrequencia" 
+                        uib-btn-radio="'unica'" 
+                        ng-selected="vm.movimentacao.tipoFrequencia != 'fixa' && vm.movimentacao.tipoFrequencia != 'parcelada'"
+                        required>Única
+                    </label>
+                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'fixa'" disabled title="Em desenvolvimento" required>Fixa</label>
+                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'parcelada'" disabled title="Em desenvolvimento" required>Parcelada</label>
                 </div>
             </div>
         </div>
@@ -46,7 +52,7 @@
             <div class="col-sm-12 col-sm-offset-2">
                 <label for="descricao" class="control-label col-sm-2">Descrição</label>
                 <div class="col-sm-4">
-                    <textarea class="form-control" ng-model="descricao" ></textarea>
+                    <textarea class="form-control" ng-model="vm.movimentacao.descricao" ></textarea>
                 </div>
             </div>
         </div>
@@ -62,8 +68,24 @@
         <div class="form-group">
             <div class="col-sm-12 col-sm-offset-2">
                 <label for="data" class="control-label col-sm-2">Data</label>
-                <div class="col-sm-2">
-                    <input ng-model="vm.movimentacao.data" type="text" class="form-control" id="data" required>
+                <div class="input-group col-sm-2">
+                    <!--<input ng-model="vm.movimentacao.data" type="text" class="form-control" id="data" required>-->
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        uib-datepicker-popup 
+                        uib-datepicker-popup="{{vm.dateFormat}}"
+                        ng-model="vm.movimentacao.data" 
+                        is-open="vm.calendarOpened" 
+                        datepicker-options="vm.dateOptions" 
+                        ng-required="true" 
+                        close-text="Fechar" 
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar()">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
                 </div>
             </div>
         </div>

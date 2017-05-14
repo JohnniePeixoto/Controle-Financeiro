@@ -5,7 +5,8 @@ var parseParams = require('../utils/parse-params');
 
 module.exports = function(app) {
   app.get('/api/movimentacoes', function(req, resp) {
-    movimentacoesModel.find().then(function(dados){
+    movimentacoesModel.find(parseParams(req.query.filter), [], {sort: {data: 1}})
+      .populate('i_categorias').then(function(dados){
       resp.json(dados);
     }, function(erro) {
       resp.status(500).json(erro);

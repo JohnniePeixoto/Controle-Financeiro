@@ -2,24 +2,53 @@
     'use strict';
     
     var movimentacoesCadCtrl = angular.module("myApp");
-    movimentacoesCadCtrl.$inject = ['$scope', '$stateParams', 'MovimentacoesService'];
+    movimentacoesCadCtrl.$inject = ['$scope', '$stateParams', '$location', 'MovimentacoesService'];
 
-    movimentacoesCadCtrl.controller("movimentacoesCadCtrl", function($scope, $stateParams, MovimentacoesService){
+    movimentacoesCadCtrl.controller("movimentacoesCadCtrl", function($scope, $stateParams, $location, MovimentacoesService){
         var vm = this;
-        var johnnie = {
-                "_id": "59178793d84eab37f8ec7a81",
-                "nome": "Johnnie",
-                "data_nascimento": "1991-08-11T00:00:00.000Z",
-                "saldo": 900,
-                "__v": 0
-            }     
-        
-        vm.movimentacao = $stateParams.movimentacao || {tipoFrequencia: 'unica', i_usuarios: johnnie, saldoAtual:'1100' };
+         
         vm.save = save;
+        vm.openCalendar = openCalendar;
+        vm.calendarOpened = false;
+        vm.dateFormat = "dd/MM/yyyy"
+        vm.movimentacao = {
+            tipoFrequencia: 'unica', 
+            i_usuarios: "59178793d84eab37f8ec7a81",
+            saldoAtual:'1100'
+        };
+        
+        vm.dateOptions = {
+            format: 'dd/mm/yyyy',
+            maxDate: new Date(2100, 1, 1),
+            minDate: new Date(2000, 1, 1),
+            startingDay: 1,
+            todayBtn: false,
+            clearBtn: false,
+            closeBtn: false
+        };
+
+        if ( $stateParams.id ){
+            find($stateParams.id);
+            vm.title = "Editando movimentação";
+        } else { 
+            vm.title = "Cadastrando movimentação";
+        }
+        
+        function openCalendar(){
+            vm.calendarOpened = !vm.calendarOpened;
+        };
 
         function save(){
             MovimentacoesService.save(vm.movimentacao).then(function (data){
                 vm.movimentacao = data.data;
+                $location.path('/movimentacoes');
+            });
+        }
+
+        function find(id){
+            MovimentacoesService.findById(id).then(function(data){
+                vm.movimentacao = data.data;
+                vm.movimentacao.tipoFrequencia = 'unica'; //TODO remover quando fizer agendamentos
             });
         }
     })
