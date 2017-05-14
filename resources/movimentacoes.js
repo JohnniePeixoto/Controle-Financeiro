@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var movimentacoesModel = mongoose.model('movimentacoes');
+var parseParams = require('../utils/parse-params');
 
 module.exports = function(app) {
   app.get('/api/movimentacoes', function(req, resp) {

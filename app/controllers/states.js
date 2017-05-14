@@ -12,7 +12,7 @@ angular.module("myApp", ['ui.router', 'ui.bootstrap'])
                     controller: "homeCtrl as vm"
                 })
                 .state('movimentacoesList', {
-                    url: '/movimentacoes/',
+                    url: '/movimentacoes',
                     templateUrl: './views/movimentacoesList.html',
                     controller: "movimentacoesListCtrl as vm"
                 })
@@ -29,7 +29,7 @@ angular.module("myApp", ['ui.router', 'ui.bootstrap'])
         })
 
     .controller('mainCtrl', function(){
-        console.log("mainCtrl");
+        // console.log("mainCtrl");
     });
 })();
 

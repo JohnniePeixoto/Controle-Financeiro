@@ -4,7 +4,7 @@ var consign = require('consign');
 
 var app = express();
 
-app.use(express.static('./views'));
+app.use(express.static('./app/'));
 app.use(bodyParser.json());
 
 consign()

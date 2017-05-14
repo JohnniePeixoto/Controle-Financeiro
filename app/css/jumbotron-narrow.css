@@ -68,12 +68,17 @@ thead tr th{
   align-items: center;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   min-width: 0px;
   left: inherit;
 }
 
-
+.positive td { 
+  background-color: #575
+}
+.negative td { 
+  background-color: #901
+}
 
 /* Supporting marketing content */
 .marketing {

@@ -1,10 +1,12 @@
 var mongoose = require('mongoose');
 
 var agendamentosModel = mongoose.model('agendamentos');
+var parseParams = require('../utils/parse-params');
 
 module.exports = function(app) {
   app.get('/api/agendamentos', function(req, resp) {
-    agendamentosModel.find().then(function(dados){
+    agendamentosModel.find(parseParams(req.query.filter), [], {sort: {id: 1}})
+      .then(function(dados){
       resp.json(dados);
     }, function(erro) {
       resp.status(500).json(erro);

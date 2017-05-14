@@ -2,7 +2,7 @@ var http = require('http');
 var app = require('./config/express');
 var database = require('./config/database');
 
-var porta = 3000;
+var porta = 8080;
 
 database('mongodb://localhost/controlefinanceiro');
 

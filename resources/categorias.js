@@ -1,10 +1,11 @@
 var mongoose = require('mongoose');
 
 var categoriasModel = mongoose.model('categorias');
+var parseParams = require('../utils/parse-params');
 
 module.exports = function(app) {
   app.get('/api/categorias', function(req, resp) {
-    categoriasModel.find()
+    categoriasModel.find(parseParams(req.query.filter), [], {sort: {descricao: 1}})
       .then(function(dados){
       resp.json(dados);
     }, function(erro) {

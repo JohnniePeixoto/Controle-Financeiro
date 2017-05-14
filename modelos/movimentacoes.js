@@ -19,4 +19,20 @@ var _model = new Schema({
   }
 });
 
+// _model.pre('save', function (next) {
+//   var mov = this;
+//   var now = new Date();
+//   this.dataCadastro = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+//   next();
+// })
+
+// _model.post('find', function (next) {
+//   console.log(this);
+//   this.data = this.data.splice(11);
+  // var now = this.data;
+  // this.data = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+  // this.dataCadastro = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
+  // next();
+// })
+
 mongoose.model('movimentacoes', _model);

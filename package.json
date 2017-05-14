@@ -16,6 +16,7 @@
     "express": "^4.15.2",
     "gulp": "^3.9.1",
     "http": "0.0.0",
+    "mongo-oplog": "^2.0.2",
     "mongoose": "^4.9.7",
     "ui-router": "^1.0.0-alpha.3"
   }

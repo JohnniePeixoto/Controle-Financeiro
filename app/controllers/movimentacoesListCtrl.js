@@ -2,12 +2,43 @@
     'use strict';
     
     var movimentacoesListCtrl = angular.module("myApp");
-    movimentacoesListCtrl.$inject = ['$scope'];
+    movimentacoesListCtrl.$inject = ['$scope', 'MovimentacoesService'];
 
-    movimentacoesListCtrl.controller("movimentacoesListCtrl", function($scope){
+    movimentacoesListCtrl.controller("movimentacoesListCtrl", function($scope, MovimentacoesService){
         var vm = this;
 
-        vm.title = "Visão Geral";
+        vm.lista = {};
+        
+        vm.get = get;
+        vm.edit = edit;
+        vm.remove = remove;
+
+        init();
+
+        function init(){
+            get();
+        }
+
+        function get() {
+            var query = vm.busca ? { nome: vm.busca } : {}
+            MovimentacoesService.find(query).then(function (data) {
+                vm.lista = data.data;
+            });
+        }
+
+        function edit(index){
+            //Redirecionar para tela de cadastro com item
+            // vm.categoria = vm.lista[index];
+            // vm.lista.splice(index,1);
+        }
+        
+        function remove(item){
+            MovimentacoesService.remove(item._id).then(function (data) {
+                vm.categoria = {};
+                get();
+            });
+        }
+
     })
 })();
 
