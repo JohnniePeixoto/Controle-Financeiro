@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-angular.module("myApp", ['ui.router', 'ui.bootstrap'])
+angular.module("myApp", ['ui.router', 'ui.bootstrap', 'ui.utils.masks'])
     
     .config(function ($stateProvider, $urlRouterProvider){
             $urlRouterProvider.otherwise('/home');

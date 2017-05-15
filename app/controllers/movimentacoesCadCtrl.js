@@ -10,21 +10,19 @@
         vm.save = save;
         vm.openCalendar = openCalendar;
         vm.calendarOpened = false;
-        vm.dateFormat = "dd/MM/yyyy"
         vm.movimentacao = {
             tipoFrequencia: 'unica', 
             i_usuarios: "59178793d84eab37f8ec7a81",
             saldoAtual:'1100'
         };
         
+        vm.dateFormat = "dd/MM/yyyy"
         vm.dateOptions = {
             format: 'dd/mm/yyyy',
             maxDate: new Date(2100, 1, 1),
             minDate: new Date(2000, 1, 1),
             startingDay: 1,
-            todayBtn: false,
-            clearBtn: false,
-            closeBtn: false
+            showWeeks: false
         };
 
         if ( $stateParams.id ){
@@ -49,7 +47,12 @@
             MovimentacoesService.findById(id).then(function(data){
                 vm.movimentacao = data.data;
                 vm.movimentacao.tipoFrequencia = 'unica'; //TODO remover quando fizer agendamentos
+                dateTransform();
             });
+        }
+
+        function dateTransform(){
+            vm.movimentacao.data = new Date(vm.movimentacao.data);
         }
     })
 })();

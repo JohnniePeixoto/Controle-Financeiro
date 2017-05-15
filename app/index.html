@@ -25,12 +25,12 @@
     <script src="./node_modules/angular-touch/angular-touch.js"></script>
     <script src="./node_modules/angular-animate/angular-animate.js"></script>
     <script src="./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="./node_modules/angular-input-masks/releases/angular-input-masks-standalone.min.js"></script>
     <script src="./js/angular-ui-router.min.js"></script>
     <script src="./js/angular-locale_pt-br.js"></script>
   </head>
   <body>
-    <div class="container-fluid">
-
+    <div class="container-header">
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
@@ -41,16 +41,14 @@
         </nav>
         <h3 class="text-muted">Controle Financeiro</h3>
       </div>
+    </div>
     
       <div class="jumbotron">
         <div ui-view></div>
       </div>
-
-      <footer class="footer text-center">
-        <p>&copy; 2017 JW</p>
+      <footer class="footer text-center navbar-fixed-bottom">
+        <p>&copy; JW 2017 </p>
       </footer>
-
-    </div> <!-- /container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

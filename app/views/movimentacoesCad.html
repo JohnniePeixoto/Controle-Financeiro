@@ -1,107 +1,132 @@
-<h2>{{vm.title}}</h2>
-{{vm.movimentacao}}
-<div class="row" style="margin: 0 auto; width:80%;">
-    <form name="form" class="form-horizontal" role="form" novalidate>
+<div class="container">
+    
+    <h2>{{vm.title}}</h2>
+
+        <form name="form" class="form-horizontal" role="form" novalidate>
         
-        <div class="form-group">
-            <div class="btn-group col-sm-12 col-sm-offset-4 mb-2">
-                <label class="btn btn-default col-sm-2" ng-model="vm.movimentacao.tipo" uib-btn-radio="'despesa'" ng-selected="vm.movimentacao.tipo=='despesa'" required>Despesa</label>
-                <label class="btn btn-default col-sm-2" ng-model="vm.movimentacao.tipo" uib-btn-radio="'receita'" ng-selected="vm.movimentacao.tipo=='receita'" required>Receita</label>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="col-sm-4 col-sm-offset-4">
-                <div class="btn-group btn-group-justified">
-                    <label 
-                        class="btn btn-default"
-                        ng-model="vm.movimentacao.tipoFrequencia" 
-                        uib-btn-radio="'unica'" 
-                        ng-selected="vm.movimentacao.tipoFrequencia != 'fixa' && vm.movimentacao.tipoFrequencia != 'parcelada'"
-                        required>Única
-                    </label>
-                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'fixa'" disabled title="Em desenvolvimento" required>Fixa</label>
-                    <label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'parcelada'" disabled title="Em desenvolvimento" required>Parcelada</label>
+            <div class="row">
+                <div class="form-group">
+                    <div class="btn-group col-sm-offset-4 col-sm-8">
+                        <label class="btn btn-default col-sm-3" ng-model="vm.movimentacao.tipo" uib-btn-radio="'despesa'" ng-selected="vm.movimentacao.tipo=='despesa'" required>Despesa</label>
+                        <label class="btn btn-default col-sm-3" ng-model="vm.movimentacao.tipo" uib-btn-radio="'receita'" ng-selected="vm.movimentacao.tipo=='receita'" required>Receita</label>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="form-group" ng-if="vm.movimentacao.tipoFrequencia != 'unica'">
-            <div class="col-sm-12 col-sm-offset-2">
-                <label for="frequencia" class="control-label col-sm-2">Frequência</label>
-                <div class="col-sm-4">
-                    <select ng-model="vm.movimentacao.frequencia" class="form-control" id="frequencia">
-                        <option value="d">Dia</option>
-                        <option value="s">Semana</option>
-                        <option value="m">Mês</option>
-                        <option value="a">Ano</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-group" ng-if="vm.movimentacao.tipoFrequencia != 'unica'">
-            <div class="col-sm-12 col-sm-offset-2">
-                <div if="tipoFrequencia == 'parcela'">
-                    <label for="parcelas" class="control-label col-sm-2" >Número de Parcelas</label>
-                    <div class="col-sm-4">
-                        <input ng-model="vm.movimentacao.qtdParcelas" type="text" class="form-control col-sm-2" id="parcelas">
+            </div>    
+            
+            <div class="row">
+                <div class="form-group">
+                    <div class="btn-group col-sm-offset-4 col-sm-8">
+                        <label
+                            class="btn btn-default col-sm-3"
+                            ng-model="vm.movimentacao.tipoFrequencia" 
+                            uib-btn-radio="'unica'" 
+                            ng-selected="vm.movimentacao.tipoFrequencia != 'fixa' && vm.movimentacao.tipoFrequencia != 'parcelada'"
+                            required>Única
+                        </label>
+                        <label class="btn btn-default col-sm-3" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'fixa'" disabled title="Em desenvolvimento" required>Fixa</label>
+                        <!--<label class="btn btn-default" ng-model="vm.movimentacao.tipoFrequencia" uib-btn-radio="'parcelada'" disabled title="Em desenvolvimento" required>Parcelada</label>-->
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 col-sm-offset-2">
-                <label for="descricao" class="control-label col-sm-2">Descrição</label>
-                <div class="col-sm-4">
-                    <textarea class="form-control" ng-model="vm.movimentacao.descricao" ></textarea>
+            
+            <div class="row">
+                <div class="form-group" ng-if="vm.movimentacao.tipoFrequencia != 'unica'">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <label for="frequencia" class="control-label col-sm-2">Frequência</label>
+                        <div class="col-sm-4">
+                            <select ng-model="vm.movimentacao.frequencia" class="form-control" id="frequencia">
+                                <option value="d">Dia</option>
+                                <option value="s">Semana</option>
+                                <option value="m">Mês</option>
+                                <option value="a">Ano</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 col-sm-offset-2">
-                <label for="valor" class="control-label col-sm-2">Valor</label>
-                <div class="input-group col-sm-2">
-                    <span class="input-group-addon">R$</span>
-                    <input ng-model="vm.movimentacao.valor" type="text" class="form-control" id="valor" required>
+
+            <div class="row">
+                <div class="form-group" ng-if="vm.movimentacao.tipoFrequencia != 'unica'">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <div if="tipoFrequencia == 'parcela'">
+                            <label for="parcelas" class="control-label col-sm-2" >Número de Parcelas</label>
+                            <div class="col-sm-4">
+                                <input ng-model="vm.movimentacao.qtdParcelas" type="text" class="form-control col-sm-2" id="parcelas">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 col-sm-offset-2">
-                <label for="data" class="control-label col-sm-2">Data</label>
-                <div class="input-group col-sm-2">
-                    <!--<input ng-model="vm.movimentacao.data" type="text" class="form-control" id="data" required>-->
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        uib-datepicker-popup 
-                        uib-datepicker-popup="{{vm.dateFormat}}"
-                        ng-model="vm.movimentacao.data" 
-                        is-open="vm.calendarOpened" 
-                        datepicker-options="vm.dateOptions" 
-                        ng-required="true" 
-                        close-text="Fechar" 
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar()">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <label for="descricao" class="control-label col-sm-2">Descrição</label>
+                        <div class="col-sm-5">
+                            <textarea class="form-control" ng-model="vm.movimentacao.descricao" ></textarea>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 col-sm-offset-2">
-                <label for="categoria" class="control-label col-sm-2">Categoria</label>
-                <div class="col-sm-4" ng-controller="categoriasCtrl as vmCat">
-                    <select ng-model="vm.movimentacao.i_categorias" class="form-control" id="categoria" required>
-                        <option ng-repeat="item in vmCat.lista" value="{{item._id}}">{{item.descricao}}</option>
-                    </select>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8">
+                        <label for="valor" class="control-label col-sm-2">Valor</label>
+                        <div class="input-group col-sm-5">
+                            <span class="input-group-addon">R$</span>
+                            <input ng-model="vm.movimentacao.valor" type="text" class="form-control" id="valor" ui-number-mask required>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">Salvar</button>
-            <a ui-sref="movimentacoesList" type="button" class="btn btn-default">Cancelar</a>
-        </div>
-    </form>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8">
+                        <label for="data" class="control-label col-sm-2">Data</label>
+                        <div class="input-group col-sm-5">
+                            <!--<input ng-model="vm.movimentacao.data" type="text" class="form-control" id="data" required>-->
+                            <input 
+                                type="text" 
+                                ng-model="vm.movimentacao.data"
+                                class="form-control"
+                                uib-datepicker-popup="{{vm.dateFormat}}"
+                                datepicker-options="vm.dateOptions" 
+                                is-open="vm.calendarOpened" 
+                                close-text="Fechar" 
+                                show-button-bar="false"
+                                required
+                            />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="vm.openCalendar()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <label for="categoria" class="control-label col-sm-2">Categoria</label>
+                        <div class="col-sm-5" ng-controller="categoriasCtrl as vmCat">
+                            <select ng-model="vm.movimentacao.i_categorias" class="form-control" id="categoria" required>
+                                <option ng-repeat="item in vmCat.lista" value="{{item._id}}">{{item.descricao}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="form-group">
+                    <button type="button" class="btn btn-primary" ng-click="vm.save()" ng-disabled="form.$invalid">Salvar</button>
+                    <a ui-sref="movimentacoesList" type="button" class="btn btn-default">Cancelar</a>
+                </div>
+            </div>
+
+        </form>
 </div>

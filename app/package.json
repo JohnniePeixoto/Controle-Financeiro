@@ -11,6 +11,7 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
+    "angular-input-masks": "^2.5.0",
     "angular-touch": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "http": "0.0.0",
