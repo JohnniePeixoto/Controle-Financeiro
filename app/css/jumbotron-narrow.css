@@ -78,6 +78,9 @@ thead tr th{
   left: inherit;
 }
 
+.input-group{
+  padding-left: inherit !important;
+}
 
 /* Supporting marketing content */
 .marketing {

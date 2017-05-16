@@ -5,7 +5,7 @@ var parseParams = require('../utils/parse-params');
 
 module.exports = function(app) {
   app.get('/api/categorias', function(req, resp) {
-    categoriasModel.find(parseParams(req.query.filter), [], {sort: {descricao: 1}})
+    categoriasModel.find(parseParams(req.query.filter), [])
       .then(function(dados){
       resp.json(dados);
     }, function(erro) {

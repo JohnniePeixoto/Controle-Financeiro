@@ -22,7 +22,7 @@
             var query = vm.busca ? { nome: vm.busca } : {};
             MovimentacoesService.find(query).then(function (data) {
                 vm.lista = data.data;
-                //ordena();
+                ordena();
             });
         }
 
@@ -34,11 +34,7 @@
         }
 
         function ordena(){
-            vm.lista.sort(function(a, b){
-                a.data = new Date(a.data);
-                b.data = new Date(b.data);
-                return a.data < b.data;
-            });
+            // vm.lista = _.sortBy(vm.lista, [i => i.data], 1);
         }
 
     })

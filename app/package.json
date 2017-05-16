@@ -15,6 +15,7 @@
     "angular-touch": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "http": "0.0.0",
+    "lodash": "^4.17.4",
     "ui-router": "^1.0.0-alpha.3"
   }
 }

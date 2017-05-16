@@ -24,7 +24,7 @@
         function get() {
             var query = vm.busca ? { nome: vm.busca } : {}
             CategoriaService.find(query).then(function (data) {
-                vm.lista = data.data;
+                vm.lista = _.sortBy(data.data, [cat => cat.descricao.toLowerCase()]);
             });
         }
 
