@@ -29,15 +29,18 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>Descrição</th>
+                    <th>Descricao</th>
                     <th>Valor</th>
                     <th>Categoria</th>
                     <th>Data</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody ng-repeat="(key, item) in vm.lista">
-                <tr ng-class="item.tipo == 'receita' ? 'text-success' : 'text-danger'" class="text-white">
+            <tbody>
+                <tr ng-if="vm.lista.length == 0">
+                    <td colspan='5'>Nenhuma movimentação cadastrada</td>
+                </tr>
+                <tr ng-repeat="(key, item) in vm.lista" ng-class="item.tipo == 'receita' ? 'text-success' : 'text-danger'" class="text-white">
                     <td>{{item.descricao}}</td>
                     <td>{{item.valor | currency}}</td>
                     <td>{{item.i_categorias.descricao}}</td>

@@ -6,6 +6,7 @@ var _model = new Schema({
   valor: { type: Number, required: "O valor é obrigatório"},
   saldoAtual: { type: Number, required: true},
   descricao: { type: String, required: "O campo descrição é obrigatório"},
+  observacao: String,
   data: { type: Date, default: Date.now },
   dataCadastro: { type: Date, default: Date.now },
   i_categorias: {
@@ -20,11 +21,30 @@ var _model = new Schema({
 });
 
 // _model.pre('save', function (next) {
-//   var mov = this;
+  // var mov = this;
+  // var usuarioModel = mongoose.model("usuarios");
+  // var usuarioId = mov.i_usuarios;
+  // var saldo;
+  // usuarioModel.findById(usuarioId).then(function(usuario){
+  //   var saldo = usuario.saldo;
+  //   console.log(mov.tipo);
+  //   if ( mov.tipo == 'receita' ){
+  //       saldo += mov.valor;
+  //   } else {
+  //       saldo -= mov.valor;
+  //   }
+    
+  //   usuarioModel.findByIdAndUpdate(usuarioId, {saldo : saldo}).then(function(){
+  //     next();
+  //   }, function(erro){
+  //     var err = new Error('Erro ao cadastrar movimentação');
+  //     next(err);
+  //   });
+//   });
+  
 //   var now = new Date();
 //   this.dataCadastro = now.getFullYear()+'-'+(now.getMonth()+1)+'-'+now.getDate();
-//   next();
-// })
+// });
 
 // _model.post('find', function (next) {
 //   console.log(this);

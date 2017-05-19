@@ -30,7 +30,7 @@
     <script src="./js/angular-ui-router.min.js"></script>
     <script src="./js/angular-locale_pt-br.js"></script>
   </head>
-  <body>
+  <body ng-controller="headerCtrl as vm">
     <div class="container-header">
       <div class="header clearfix">
         <nav>
@@ -41,13 +41,14 @@
           </ul>
         </nav>
         <h3 class="text-muted">Controle Financeiro</h3>
+        <div class="center">Olá, {{vm.user.nome}} ({{vm.user.saldo | currency}})</div>
       </div>
     </div>
     
       <div class="jumbotron">
         <div ui-view></div>
       </div>
-      <footer class="footer text-center navbar-fixed-bottom">
+      <footer class="footer text-center navbar-bottom">
         <p>&copy; JW 2017 </p>
       </footer>
 
@@ -55,12 +56,14 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="./controllers/states.js"></script>
+    <script src="./controllers/headerCtrl.js"></script>
     <script src="./controllers/home.js"></script>
     <script src="./controllers/categoriasCtrl.js"></script>
     <script src="./controllers/movimentacoesCadCtrl.js"></script>
     <script src="./controllers/movimentacoesListCtrl.js"></script>
     <script src="./services/categorias-service.js"></script>
     <script src="./services/movimentacoes-service.js"></script>
+    <script src="./services/usuarios-service.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
     <script src="js/bootstrap.min.js"></script>

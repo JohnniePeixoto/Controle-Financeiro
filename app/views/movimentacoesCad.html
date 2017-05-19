@@ -6,9 +6,12 @@
         
             <div class="row">
                 <div class="form-group">
-                    <div class="btn-group col-sm-offset-2 col-sm-8">
+                    <div class="btn-group col-sm-offset-2 col-sm-8" ng-if="!vm.isEditando()">
                         <label class="btn btn-default col-sm-6" ng-model="vm.movimentacao.tipo" uib-btn-radio="'despesa'" ng-selected="vm.movimentacao.tipo=='despesa'" required>Despesa</label>
                         <label class="btn btn-default col-sm-6" ng-model="vm.movimentacao.tipo" uib-btn-radio="'receita'" ng-selected="vm.movimentacao.tipo=='receita'" required>Receita</label>
+                    </div>
+                    <div class="btn-group col-sm-offset-2 col-sm-8" ng-if="vm.isEditando()">
+                        <h4>Tipo: {{vm.movimentacao.tipo | uppercase}}</h4>
                     </div>
                 </div>
             </div>    
@@ -55,6 +58,16 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-8">
+                        <label for="valor" class="control-label col-sm-2">Descrição</label>
+                        <div class="col-sm-10">
+                            <input ng-model="vm.movimentacao.descricao" type="text" class="form-control" id="descricao" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="form-group">
@@ -111,9 +124,9 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <label for="descricao" class="control-label col-sm-2">Descrição</label>
+                        <label for="observacao" class="control-label col-sm-2">Observação</label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" ng-model="vm.movimentacao.descricao" ></textarea>
+                            <textarea class="form-control" ng-model="vm.movimentacao.observacao" ></textarea>
                         </div>
                     </div>
                 </div>

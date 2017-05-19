@@ -12,8 +12,11 @@
 
     <div class="row">
         <table class="table table-striped">
-            <tbody ng-repeat="item in vm.lista">
-                <tr>
+            <tbody>
+                <tr ng-if="vm.lista.length == 0">
+                    <td>Nenhuma categoria cadastrada</td>
+                </tr>
+                <tr ng-repeat="item in vm.lista" >
                     <td>{{item.descricao}}</td>
                     <td>
                         <a class="btn btn-link" ng-click="vm.edit($index)">

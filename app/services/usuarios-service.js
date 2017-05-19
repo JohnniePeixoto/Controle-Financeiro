@@ -3,10 +3,10 @@
 
   angular
     .module('myApp')
-    .factory('MovimentacoesService', MovimentacoesService);
+    .factory('UsuariosService', UsuariosService);
 
-  MovimentacoesService.$inject = ['$http'];
-  function MovimentacoesService($http) {
+  UsuariosService.$inject = ['$http'];
+  function UsuariosService($http) {
     var service = {
       find: find,
       findById: findById,
@@ -14,27 +14,20 @@
       remove: remove
     };
 
-    var URL = '/api/movimentacoes';
+    var URL = '/api/usuarios';
 
     return service;
 
     function find(query) {
         return $http.get(URL, { params: { filter: JSON.stringify(query) } });
     }
-    
-//     function findByMonth(month){
-//       var start = new Date(2010, 11, 1);
-//       var end = new Date(2010, 11, 30);
-
-//       db.posts.find({created_on: {$gte: start, $lt: end}}); 
-//       return $http.get(URL, { params: { filter: JSON.stringify(query) } });
-//     }
 
     function findById(id) {
         return $http.get(URL + '/' + id);
     }
 
     function save(record) {
+        console.log(JSON.stringify(record));
         if (record._id) {
             return $http.put(URL + '/' + record._id, record);
         } else {
@@ -45,5 +38,6 @@
     function remove(id) {
       return $http.delete(URL + '/' + id);
     }
+
   }
 })();

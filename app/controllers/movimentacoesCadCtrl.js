@@ -9,6 +9,7 @@
          
         vm.save = save;
         vm.openCalendar = openCalendar;
+        vm.isEditando = isEditando;
         vm.calendarOpened = false;
         vm.movimentacao = {
             tipoFrequencia: 'unica', 
@@ -53,6 +54,10 @@
 
         function dateTransform(){
             vm.movimentacao.data = new Date(vm.movimentacao.data);
+        }
+
+        function isEditando(){
+            return $stateParams.id != null;
         }
     })
 })();
