@@ -1,0 +1,57 @@
+h1, h2, h3, h4, h5 {
+  margin-bottom: 30px;
+}
+
+thead tr th{
+  text-align: center;
+}
+
+.align-center {
+  text-align: center; 
+  align-content: center;
+  align-items: center;
+}
+
+.dropdown-menu {
+  min-width: 0px;
+  left: inherit;
+}
+
+.input-group{
+  padding-left: inherit !important;
+}
+
+.panel-header{
+  padding-top: 15px;
+  background-color: #EEE;
+  border-bottom: 1px solid #AAA;
+}
+
+.margin-top{
+  margin-top: 25px;
+}
+
+md-toast{
+  position: fixed;
+  z-index: 10000;
+}
+
+md-toast.md-success-toast-theme .md-toast-content {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+md-toast.md-error-toast-theme .md-toast-content {
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+md-toast.md-warning-toast-theme .md-toast-content {
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
+
+md-toast.md-info-toast-theme .md-toast-content {
+    color: #00529B;
+    background-color: #BDE5F8;
+}

@@ -27,7 +27,6 @@
     }
 
     function save(record) {
-        console.log(JSON.stringify(record));
         if (record._id) {
             return $http.put(URL + '/' + record._id, record);
         } else {

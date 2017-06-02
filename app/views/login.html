@@ -1,0 +1,78 @@
+<!--<div class="jumbotron">
+    <div class="container">
+      <img id="user-photo" src="css/user-anonimo.jpg">
+      <h1>Olá, <span id="user-name">visitante</span>!</h1>
+      <p id="user-email"></p>
+      <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="370" data-height="50" data-longtitle="true" data-lang="pt-BR"></div>
+    </div>
+  </div>
+ -->
+<!-- GOOGLE LOGIN -->
+<!--<meta name="google-signin-scope" content="profile email">
+  <meta name="google-signin-client_id" content="303805458100-ih29l4mj4rndhaj8lhfc4bpt0171tifv.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>-->
+
+<!--<script>
+    function onSignIn(response) {
+          // Conseguindo as informações do seu usuário:
+          var perfil = response.getBasicProfile();
+
+          // Conseguindo o ID do Usuário
+          var userID = perfil.getId();
+
+          // Conseguindo o Nome do Usuário
+          var userName = perfil.getName();
+
+          // Conseguindo o E-mail do Usuário
+          var userEmail = perfil.getEmail();
+
+          // Conseguindo a URL da Foto do Perfil
+          var userPicture = perfil.getImageUrl();
+
+          document.getElementById('user-photo').src = userPicture;
+          document.getElementById('user-name').innerText = userName;
+          document.getElementById('user-email').innerText = userEmail;
+
+          // Recebendo o TOKEN que você usará nas demais requisições à API:
+          var LoR = response.getAuthResponse().id_token;
+          console.log("~ le Tolkien: " + LoR);
+      };
+  </script>
+ -->
+
+<div class="container text-center">
+    <div class="row">
+        <div flex class="column md-whiteframe-6dp">
+            <div class="panel-header" flex layout-padding>
+                <text class="md-display-2">Controle Financeiro</text>
+            </div>
+            <div flex class="column panel-body" layout-align="center" layout-margin>
+                <form name="form" no-validate>
+                    <div flex>
+                        <md-input-container>
+                            <label>Login</label>
+                            <input name="login" ng-model="vm.user.login" auto-foco>
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-input-container>
+                            <label>Senha</label>
+                            <input name="senha" ng-model="vm.user.senha" type="password">
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-button type="submit" ng-click="vm.login()" class="md-raised md-primary">Entrar</md-button>
+                    </div>
+                    <div flex ng-if="vm.message" class="margin-top">
+                        <h5><p class="text-danger">{{vm.message}}</p></h5>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <md-button ui-sref="register" md-no-ink class="md-primary">
+                    Criar conta <i class="glyphicon glyphicon-chevron-right"></i>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

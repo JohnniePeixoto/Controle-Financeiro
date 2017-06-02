@@ -1,9 +1,9 @@
-<div class="container">
-    
-    <h2>{{vm.title}}</h2>
+<div ng-include="'/commons/menu.html'"></div>
+<div class="jumbotron">
+    <div class="container">
+        <h2>{{vm.title}}</h2>
 
         <form name="form" class="form-horizontal" role="form" novalidate>
-        
             <div class="row">
                 <div class="form-group">
                     <div class="btn-group col-sm-offset-2 col-sm-8" ng-if="!vm.isEditando()">
@@ -92,6 +92,11 @@
                                     <i class="glyphicon glyphicon-calendar"></i>
                                 </button>
                             </span>
+                            <!--<md-datepicker 
+                                ng-model="vm.movimentacao.data"
+                                md-hide-icons="all" 
+                                md-open-on-focus required>
+                            </md-datepicker>-->
                             <input 
                                 type="text" 
                                 ng-model="vm.movimentacao.data"
@@ -113,7 +118,7 @@
                     <div class="col-sm-offset-2 col-sm-8">
                         <label for="categoria" class="control-label col-sm-2">Categoria</label>
                         <div class="col-sm-10" ng-controller="categoriasCtrl as vmCat">
-                            <select ng-model="vm.movimentacao.i_categorias" class="form-control" id="categoria" required>
+                            <select ng-model="vm.movimentacao.i_categoria" class="form-control" id="categoria" required>
                                 <option ng-repeat="item in vmCat.lista" value="{{item._id}}">{{item.descricao}}</option>
                             </select>
                         </div>
@@ -138,6 +143,6 @@
                     <a ui-sref="movimentacoesList" type="button" class="btn btn-default">Cancelar</a>
                 </div>
             </div>
-
         </form>
+    </div>
 </div>

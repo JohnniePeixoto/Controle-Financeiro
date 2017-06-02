@@ -3,7 +3,12 @@ module.exports = function(param) {
 
   for (prop in obj) {
     if (typeof obj[prop] === 'string') {
-      obj[prop] = new RegExp(obj[prop], 'i');
+      if ( prop.startsWith("i_") ){
+        var mongoose = require('mongoose');
+        obj[prop] = mongoose.Types.ObjectId(obj[prop]);
+      } else {
+        obj[prop] = new RegExp(obj[prop], 'i');
+      }
     }
   }
 

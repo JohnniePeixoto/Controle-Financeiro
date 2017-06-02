@@ -7,6 +7,8 @@ var app = express();
 app.use(express.static('./app/'));
 app.use(bodyParser.json());
 
+app.set('secret', 'fuckthisshit');
+
 consign()
   .include('modelos')
   .then('resources')

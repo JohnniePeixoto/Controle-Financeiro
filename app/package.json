@@ -11,11 +11,18 @@
   "dependencies": {
     "angular": "^1.6.4",
     "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-cookies": "^1.6.4",
     "angular-input-masks": "^2.5.0",
+    "angular-material": "^1.1.4",
+    "angular-messages": "^1.6.4",
+    "angular-oauth2": "^4.1.1",
+    "angular-sanitize": "^1.6.4",
     "angular-touch": "^1.6.4",
     "angular-ui-bootstrap": "^2.5.0",
     "http": "0.0.0",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "ui-router": "^1.0.0-alpha.3"
   }
 }

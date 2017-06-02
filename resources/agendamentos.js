@@ -6,7 +6,7 @@ var parseParams = require('../utils/parse-params');
 module.exports = function(app) {
   app.get('/api/agendamentos', function(req, resp) {
     agendamentosModel.find(parseParams(req.query.filter), [], {sort: {data: 1}})
-      .populate('i_categorias')
+      .populate('i_categoria')
       .then(function(dados){
       resp.json(dados);
     }, function(erro) {

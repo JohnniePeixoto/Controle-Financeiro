@@ -5,8 +5,8 @@
     .module('myApp')
     .factory('MovimentacoesService', MovimentacoesService);
 
-  MovimentacoesService.$inject = ['$http'];
-  function MovimentacoesService($http) {
+  MovimentacoesService.$inject = ['$http', 'CommonService'];
+  function MovimentacoesService($http, CommonService) {
     var service = {
       find: find,
       findById: findById,
@@ -19,7 +19,8 @@
     return service;
 
     function find(query) {
-        return $http.get(URL, { params: { filter: JSON.stringify(query) } });
+        query.i_usuario = CommonService.getUserId();
+        return $http.get(URL, { params: { filter: JSON.stringify(query) }});
     }
     
 //     function findByMonth(month){

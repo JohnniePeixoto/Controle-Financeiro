@@ -1,0 +1,20 @@
+
+<div class="container-header" ng-controller="menuCtrl as vm">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" ui-sref-active="active"><a ui-sref="home">Visão Geral</a></li>
+                <li role="presentation" ui-sref-active="active"><a ui-sref="movimentacoesList">Movimentações</a></li>
+                <li role="presentation" ui-sref-active="active"><a ui-sref="categorias">Categorias</a></li>
+                <li ng-if="vm.isAdmin()" role="presentation" ui-sref-active="active"><a ui-sref="usuarios">Usuários</a></li>
+                <li role="presentation" ui-sref-active="active" title="Sair">
+                    <a ui-sref="logout" ng-click="vm.logout()">
+                        <i class="glyphicon glyphicon-off" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Controle Financeiro</h3>
+        <div class="center">Olá, {{vm.user.nome}} ({{vm.user.saldo | currency}})</div>
+    </div>
+</div>

@@ -11,10 +11,14 @@
       find: find,
       findById: findById,
       save: save,
-      remove: remove
+      remove: remove,
+      login: login,
+      register: save,
+      verifyLogin: verifyLogin
     };
 
     var URL = '/api/usuarios';
+    var loginURL = '/api/login';
 
     return service;
 
@@ -37,6 +41,14 @@
 
     function remove(id) {
       return $http.delete(URL + '/' + id);
+    }
+
+    function login(query){
+      return $http.post(loginURL, JSON.stringify(query));
+    }
+
+    function verifyLogin(query){
+      return $http.post('api/verify', JSON.stringify(query));
     }
 
   }

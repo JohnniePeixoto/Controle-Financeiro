@@ -2,21 +2,22 @@
     'use strict';
     
     var movimentacoesCadCtrl = angular.module("myApp");
-    movimentacoesCadCtrl.$inject = ['$scope', '$stateParams', '$location', 'MovimentacoesService'];
+    movimentacoesCadCtrl.$inject = ['$scope', '$stateParams', '$location', 'MovimentacoesService', 'CommonService'];
 
-    movimentacoesCadCtrl.controller("movimentacoesCadCtrl", function($scope, $stateParams, $location, MovimentacoesService){
+    movimentacoesCadCtrl.controller("movimentacoesCadCtrl", function($scope, $stateParams, $location, MovimentacoesService, CommonService){
         var vm = this;
          
         vm.save = save;
-        vm.openCalendar = openCalendar;
         vm.isEditando = isEditando;
-        vm.calendarOpened = false;
+        // vm.isOpen = false; //material calendar
         vm.movimentacao = {
-            tipoFrequencia: 'unica', 
-            i_usuarios: "59178793d84eab37f8ec7a81",
-            saldoAtual:'1100'
+            tipoFrequencia: 'unica', //TODO rever quando codificar Agendamentos
+            i_usuario: CommonService.getUserId()
         };
-        
+
+        //Calendar stuff
+        vm.openCalendar = openCalendar;
+        vm.calendarOpened = false;
         vm.dateFormat = "dd/MM/yyyy"
         vm.dateOptions = {
             format: 'dd/mm/yyyy',
@@ -25,6 +26,9 @@
             startingDay: 1,
             showWeeks: false
         };
+        function openCalendar(){
+            vm.calendarOpened = !vm.calendarOpened;
+        };//calendar end 
 
         if ( $stateParams.id ){
             find($stateParams.id);
@@ -33,10 +37,6 @@
             vm.title = "Cadastrando movimentação";
         }
         
-        function openCalendar(){
-            vm.calendarOpened = !vm.calendarOpened;
-        };
-
         function save(){
             MovimentacoesService.save(vm.movimentacao).then(function (data){
                 vm.movimentacao = data.data;

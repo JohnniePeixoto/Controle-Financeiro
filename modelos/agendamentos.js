@@ -11,11 +11,11 @@ var _model = new Schema({
   tipoFrequencia: String,
   parcelas: Number,
   expirado: Boolean,
-  i_categorias: {
+  i_categoria: {
     type: Schema.Types.ObjectId,
     ref: 'categorias'
   },
-  i_usuarios: {
+  i_usuario: {
     type: Schema.Types.ObjectId,
     ref: 'usuarios',
     required: true

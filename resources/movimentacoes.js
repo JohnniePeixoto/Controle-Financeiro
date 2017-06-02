@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   app.get('/api/movimentacoes', function (req, resp) {
     movimentacoesModel.find(parseParams(req.query.filter), [], { sort: { data: -1 } })
-      .populate('i_categorias').then(function (dados) {
+      .populate('i_categoria').then(function (dados) {
         resp.json(dados);
       }, function (erro) {
         resp.status(500).json(erro);
@@ -17,11 +17,10 @@ module.exports = function (app) {
 
   app.post('/api/movimentacoes', function (req, resp) {
     var movimentacao = req.body;
-    var usuarioId = movimentacao.i_usuarios;
+    var usuarioId = movimentacao.i_usuario;
     var saldo;
 
     usuarioModel.findById(usuarioId).then(function (usuario) {
-      console.log(usuario);
       var saldo = usuario.saldo;
       if (movimentacao.tipo == 'receita') {
         saldo += movimentacao.valor;
@@ -45,7 +44,7 @@ module.exports = function (app) {
   app.put('/api/movimentacoes/:id', function (req, resp) {
     var movimentacaoId = req.params.id;
     var movimentacao = req.body;
-    var usuarioId = movimentacao.i_usuarios;
+    var usuarioId = movimentacao.i_usuario;
 
     movimentacoesModel.findById(movimentacaoId).then(function (old_movimentacao) {
       old_valor = old_movimentacao.valor;
@@ -84,13 +83,13 @@ module.exports = function (app) {
     var movimentacaoId = req.params.id;
 
     movimentacoesModel.findById(movimentacaoId).then(function (movimentacao) {
-      var usuarioId = movimentacao.i_usuarios;
+      var usuarioId = movimentacao.i_usuario;
 
       usuarioModel.findById(usuarioId).then(function (usuario) {
         var saldo = usuario.saldo;
 
         saldo = movimentacao.tipo == 'receita' ? saldo - movimentacao.valor : saldo + movimentacao.valor;
-        console.log(saldo);
+        
         usuarioModel.findByIdAndUpdate(usuarioId, { saldo: saldo }).then(function () {
           movimentacoesModel.remove({ _id: req.params.id }).then(function(){
               resp.send();

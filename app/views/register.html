@@ -1,0 +1,84 @@
+<div class="container text-center">
+    <div class="row">
+        <div flex class="column md-whiteframe-6dp">
+            <div class="panel-header" flex layout-padding>
+                <text class="md-display-2">Controle Financeiro</text>
+            </div>
+            <div flex class="column panel-body" layout-align="center" layout-margin>
+                <div flex class="margin-bottom"><h4>CRIAR CONTA</h4><hr/></div>
+                <form name="form" no-validate>
+                    <div flex>
+                        <md-input-container>
+                            <label layout="row">Nome Completo</label>
+                            <input name="nome" ng-model="vm.user.nome" minlength="5" auto-foco required>
+                            <div ng-messages="form.nome.$error">
+                                <div ng-message="required">Este campo é obrigatório.</div>
+                                <div ng-message="minlength">O nome deve conter no mínimo 5 caracteres.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-input-container>
+                            <label layout="row">Data de Nascimento</label>
+                            <md-datepicker 
+                                name="dataNascimento"
+                                ng-model="vm.user.data_nascimento"
+                                md-hide-icons="all" 
+                                md-open-on-focus
+                                md-current-view="year"
+                                required>
+                            </md-datepicker>
+                            <div ng-messages="form.dataNascimento.$error">
+                                <div ng-message="required">Este campo é obrigatório.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-input-container>
+                            <label layout="row">Login</label>
+                            <input name="login" ng-model="vm.user.login" minlength="5" ng-model-options='{ debounce: 200 }' ng-change="vm.validateLogin()" required>
+                            <md-progress-circular ng-if="vm.loginLoad" class="md-hue-2" md-diameter="20px" style="display:inline">
+                                <md-tooltip md-direction="right">Verificando disponibilidade</md-tooltip>
+                            </md-progress-circular>
+                            <i ng-if="vm.loginAvaiable" class="glyphicon glyphicon-ok" style="display:flex; line-height:2"></i>
+                            <div ng-messages="form.login.$error">
+                                <div ng-message="required">Este campo é obrigatório.</div>
+                                <div ng-message="minlength">O login deve conter no mínimo 5 caracteres.</div>
+                                <div ng-if="vm.loginInvalid && form.login.$valid">Já existe alguém com este login.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-input-container>
+                            <label layout="row">Senha</label>
+                            <input name="senha" ng-model="vm.user.senha" type="password" ng-blur="vm.validatePassword()" minlength="4" required>
+                            <div ng-messages="form.senha.$error">
+                                <div ng-message="required">Este campo é obrigatório.</div>
+                                <div ng-message="minlength">O senha deve conter no mínimo 4 caracteres.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-input-container>
+                            <label layout="row">Confirme a senha</label>
+                            <input name="senha2" ng-model="vm.user.senha2" type="password" ng-blur="vm.validatePassword()" required>
+                            <div ng-messages="form.senha2.$error">
+                                <div ng-message="required">Este campo é obrigatório.</div>
+                                <div ng-if="vm.passwordInvalid && form.senha2.$valid">As senhas não correspondem.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <div flex>
+                        <md-button type="submit" ng-click="vm.register()" ng-disabled="form.$invalid"class="md-raised md-primary">Entrar</md-button>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <md-button ui-sref="login" class="md-fab md-mini md-primary" ng-style="'font-size:12px'">
+                    <md-tooltip md-direction="bottom">Cancelar</md-tooltip>
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>
