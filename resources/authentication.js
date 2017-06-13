@@ -29,7 +29,7 @@ module.exports = function (app) {
                 );
                 resp.set('Authorization', token);
                 resp.set('userId', usuario._id);
-                console.log('Usuario logado: '+usuario._id);
+                // console.log('Usuario logado: '+usuario._id);
                 resp.send();
             }
         }, errorFunction(resp));
@@ -41,7 +41,7 @@ module.exports = function (app) {
             jwt.verify(token, app.get('secret'), function (erro, decoded) {
                 if (erro) {
                     if ( erro.name === 'TokenExpiredError'){
-                        erro = "Sessão expirou";
+                        erro = "Token expirou";
                     }
                     return resp.status(401).send(erro);
                 } else {
@@ -50,25 +50,21 @@ module.exports = function (app) {
                 }
             });
         } else {
-            console.log('Token :', token);
             return resp.status(401).send({ erro: 'Usuário não logado' });
         }
     });
     
     app.post('/api/verify', function(req, resp){
-        console.log(req);
         model.findOne({
             login: req.body.login
         }).then(function (usuario) {
-            console.log(usuario);
+            // console.log(usuario);
             if (!usuario) {
-                console.log("não achou");
                 resp.status(200).send({
                     message: 'Login disponível'
                 });
             } else {
-                console.log("Achou", usuario)
-                resp.status(401).send({
+                resp.status(302).send({
                     message: 'Login em uso'
                 });
             }

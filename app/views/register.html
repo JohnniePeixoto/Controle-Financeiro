@@ -40,34 +40,36 @@
                             <md-progress-circular ng-if="vm.loginLoad" class="md-hue-2" md-diameter="20px" style="display:inline">
                                 <md-tooltip md-direction="right">Verificando disponibilidade</md-tooltip>
                             </md-progress-circular>
-                            <i ng-if="vm.loginAvaiable" class="glyphicon glyphicon-ok" style="display:flex; line-height:2"></i>
+                            <i ng-if="vm.loginAvaiable && form.login.$valid" class="glyphicon glyphicon-ok" style="display:flex; line-height:2"></i>
                             <div ng-messages="form.login.$error">
                                 <div ng-message="required">Este campo é obrigatório.</div>
                                 <div ng-message="minlength">O login deve conter no mínimo 5 caracteres.</div>
-                                <div ng-if="vm.loginInvalid && form.login.$valid">Já existe alguém com este login.</div>
+                                <div ng-if="vm.loginInvalid && form.login.$valid">Este login já esta em uso.</div>
                             </div>
                         </md-input-container>
                     </div>
                     <div flex>
                         <md-input-container>
                             <label layout="row">Senha</label>
-                            <input name="senha" ng-model="vm.user.senha" type="password" ng-blur="vm.validatePassword()" minlength="4" required>
+                            <input name="senha" ng-model="vm.user.senha" type="password" ng-blur="vm.validatePassword()" minlength="4" required><!--password-verify="form.senha2.$viewValue"-->
                             <div ng-messages="form.senha.$error">
                                 <div ng-message="required">Este campo é obrigatório.</div>
                                 <div ng-message="minlength">O senha deve conter no mínimo 4 caracteres.</div>
+                                <!--<div ng-message="passInvalid">As senhas não correspondem.</div>-->
                             </div>
                         </md-input-container>
                     </div>
-                    <div flex>
+                    <!--<div flex>
                         <md-input-container>
                             <label layout="row">Confirme a senha</label>
-                            <input name="senha2" ng-model="vm.user.senha2" type="password" ng-blur="vm.validatePassword()" required>
+                            <input name="senha2" ng-model="vm.user.senha2" type="password" ng-blur="vm.validatePassword()" minlength="4" password-verify="form.senha.$viewValue" required>
                             <div ng-messages="form.senha2.$error">
                                 <div ng-message="required">Este campo é obrigatório.</div>
-                                <div ng-if="vm.passwordInvalid && form.senha2.$valid">As senhas não correspondem.</div>
+                                <div ng-message="minlength">O senha deve conter no mínimo 4 caracteres.</div>
+                                <div ng-message="passInvalid">As senhas não correspondem.</div>
                             </div>
                         </md-input-container>
-                    </div>
+                    </div>-->
                     <div flex>
                         <md-button type="submit" ng-click="vm.register()" ng-disabled="form.$invalid"class="md-raised md-primary">Entrar</md-button>
                     </div>

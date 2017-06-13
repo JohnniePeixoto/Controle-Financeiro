@@ -10,7 +10,8 @@ angular.module("myApp", [
         'ui.router', 
         'ui.bootstrap', 
         'ui.utils.masks',
-        'ngMessages'
+        'ngMessages',
+        'chart.js'
     ])
     .config(function ($stateProvider, $urlRouterProvider){
 

@@ -3,8 +3,49 @@
     <div class="container">
         <h2>Visão Geral</h2>
         <div class="row">
-            <img src="./css/chart.png" style="margin-right: 50px"/>
-            <img src="./css/chart2.png" />
+            <div class="md-col-6 md-whiteframe-10dp md-padding">
+                <canvas 
+                    id="line"
+                    height="80"
+                    class="chart chart-line" 
+                    chart-colors="vm.ondas.color"
+                    chart-data="vm.ondas.data"
+                    chart-labels="vm.ondas.labels" 
+                    chart-series="vm.ondas.series" 
+                    chart-options="vm.lineOptions"
+                    ng-if="vm.ondas.data">
+                </canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="md-col-6 pull-left md-whiteframe-10dp md-padding">
+                <h4 class="panel-header">Despesas</h4>
+                <canvas 
+                    id="despesas"
+                    width="300"
+                    class="chart chart-pie"
+                    chart-data="vm.despesas.data" 
+                    chart-labels="vm.despesas.labels" 
+                    chart-colors="vm.despesas.colors"
+                    chart-options="vm.options"
+                    ng-if="vm.despesas.data">
+                </canvas>
+                <span class="text-info" ng-if="!vm.despesas.data">Cadastre movimentações para que o gráfico seja exibido.</span>
+            </div>
+            <div class="md-col-6 pull-right md-whiteframe-10dp md-padding">
+                <h4 class="panel-header">Receitas</h4>
+                <canvas 
+                    id="receitas"
+                    width="300"
+                    class="chart chart-pie"
+                    chart-data="vm.receitas.data" 
+                    chart-labels="vm.receitas.labels"
+                    chart-options="vm.options"
+                    ng-if="vm.receitas.data">
+                </canvas>
+                <span class="text-info" ng-if="!vm.receitas.data">Cadastre movimentações para que o gráfico seja exibido.</span>
+            </div>
+            <!--<img src="./css/chart.png" style="margin-right: 50px"/>-->
         </div>
     </div>
 </div>

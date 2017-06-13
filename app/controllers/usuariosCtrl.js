@@ -53,8 +53,6 @@
             var confirm = $mdDialog.confirm()
                 .title('Excluir Usuário - '+item.nome)
                 .textContent('Deseja excluiro o usuário '+item.nome+' e todos os registros vinculados?')
-                // .ariaLabel('Lucky day')
-                // .targetEvent(ev)
                 .cancel('Não')
                 .ok('Sim');
 

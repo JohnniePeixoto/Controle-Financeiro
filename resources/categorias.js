@@ -40,7 +40,6 @@ module.exports = function(app) {
         i_categoria : id
     };
     movimentacao.find(query).then(function (data) {
-        console.log(data);
         if(data.length > 0){
             resp.status(500).json(ErrorHandler.erroDuplicidade());
         } else {

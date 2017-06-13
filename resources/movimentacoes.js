@@ -21,7 +21,7 @@ module.exports = function (app) {
     var saldo;
 
     usuarioModel.findById(usuarioId).then(function (usuario) {
-      var saldo = usuario.saldo;
+      var saldo = usuario.saldo ? usuario.saldo : 0.0;
       if (movimentacao.tipo == 'receita') {
         saldo += movimentacao.valor;
       } else {

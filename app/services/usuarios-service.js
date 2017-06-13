@@ -31,7 +31,6 @@
     }
 
     function save(record) {
-        console.log(JSON.stringify(record));
         if (record._id) {
             return $http.put(URL + '/' + record._id, record);
         } else {
@@ -48,7 +47,7 @@
     }
 
     function verifyLogin(query){
-      return $http.post('api/verify', JSON.stringify(query));
+      return $http.post('api/verify', { login: query } );
     }
 
   }

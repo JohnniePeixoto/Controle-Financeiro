@@ -38,13 +38,19 @@
             if(_timeout) { // if there is already a timeout in process cancel it
                 $timeout.cancel(_timeout);
             }
+            vm.loginAvaiable = false;
             vm.loginLoad = true;
             _timeout = $timeout(function() {
                 UsuariosService.verifyLogin(vm.user.login).then(function(data){
+                    //Login Avaiable
+                    $scope.form.login.$valid = true;
                     vm.loginAvaiable = true;
+                    vm.loginInvalid = false;
                 }, function(err){
-                    $scope.form.login.$invalid = true;
+                    //Login no Avaiable
+                    $scope.form.login.$valid = false;
                     vm.loginInvalid = true;
+                    vm.loginAvaiable = false;
                 });
                 _timeout = null;
                 vm.loginLoad = false;
@@ -57,11 +63,22 @@
                     AlertService.alert('Cadastro efetuado com sucesso', 'success');
                 }).catch(function (erro) {
                     AlertService.alert('Erro ao cadastrar seu usuário, tente novamente', 'error');
-                    console.log(erro);
                 });
         }
 
     })
+    .directive('passwordVerify', function() {
+        return {
+            restrict: 'A',
+            require: '?ngModel',
+            link: function(scope, elem, attrs, ngModel) {
+            ngModel.$validators.passInvalid = function(modelValue, viewValue) {
+                return viewValue === scope.$eval(attrs.passwordVerify);
+            };
+            }
+        };
+    })
+
     .config(function($mdDateLocaleProvider){
         $mdDateLocaleProvider.formatDate = function(date) {
             return moment(date).format('DD/MM/YYYY');

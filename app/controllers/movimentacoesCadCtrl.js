@@ -21,7 +21,7 @@
         vm.dateFormat = "dd/MM/yyyy"
         vm.dateOptions = {
             format: 'dd/mm/yyyy',
-            maxDate: new Date(2100, 1, 1),
+            maxDate: new Date(),
             minDate: new Date(2000, 1, 1),
             startingDay: 1,
             showWeeks: false
