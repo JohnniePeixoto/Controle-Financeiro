@@ -6,7 +6,7 @@ Back-end em Node JS + Express + Mongoose (MongoDB) e front-end em Angular + Boot
 NPM, MongoDB
 
 ## Instalação
-- inicie o seriço do mongoDB em um terminal:
+- inicie o serviço do mongoDB em um terminal:
 ```
 mongod
 ```
@@ -15,7 +15,7 @@ mongod
 ```
 npm install
 ```
-- na pasta app, rode também (dependências frontend):
+- na pasta app, execute também (dependências frontend):
 ```
 npm install
 ```
@@ -25,13 +25,14 @@ npm install
 nodemon .
 ```
 
-- no browser, abra o endereço
+- no browser, abra o endereço local na porta configurada no arquivo index.js
 ```
-localhost:8080/
+localhost:3000/
 ```
-
-para configurar outra porta de acesso, edite o arquivo (index.js) na pasta root
 
 ## Importante
 Este projeto ainda esta em desenvolvimento, cadastro de usuários, movimentações agendadas, e outras features ainda serão desenvolvidas.
-Ajuda sempre é bem-vinda.
+Ajuda sempre é bem-vinda :)
+
+### Observações
+* O primeiro usuário criado tem acesso a tela de todos os usuários cadastrados e pode excluí-los.
