@@ -55,3 +55,8 @@ md-toast.md-info-toast-theme .md-toast-content {
     color: #00529B;
     background-color: #BDE5F8;
 }
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}

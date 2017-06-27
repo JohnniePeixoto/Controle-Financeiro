@@ -7,7 +7,7 @@
     menuCtrl.controller("menuCtrl", function($scope, UsuariosService, $state, $window, CommonService, $cookies){
         var vm = this;
         vm.logout = logout;
-        vm.isAdmin = isAdmin;
+        vm.admin = isAdmin;
 
         var userId = CommonService.getUserId();
         UsuariosService.findById(userId).then(function(data){
@@ -16,11 +16,12 @@
 
         function logout() {
             delete $window.sessionStorage.token;
+            delete $window.sessionStorage.admin;
             $cookies.remove('userId');
         }
 
         function isAdmin(){
-            return userId === "59178793d84eab37f8ec7a81";
+            return $window.sessionStorage.admin;
         }
 
     })

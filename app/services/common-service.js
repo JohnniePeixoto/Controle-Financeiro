@@ -5,8 +5,8 @@
     .module('myApp')
     .factory('CommonService', CommonService);
 
-  CommonService.$inject = ['$cookies', 'UsuariosService'];
-  function CommonService($cookies, UsuariosService) {
+  CommonService.$inject = ['$cookies', 'UsuariosService', '$window'];
+  function CommonService($cookies, UsuariosService, $window) {
     var service = {
       getUser: getUser,
       getUserId: getUserId

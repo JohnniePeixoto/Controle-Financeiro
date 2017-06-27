@@ -2,9 +2,9 @@
     'use strict';
     
     var UsuariosCtrl = angular.module("myApp");
-    UsuariosCtrl.$inject = ['$scope', '$state', '$mdDialog', 'UsuariosService', 'AlertService', 'CommonService'];
+    UsuariosCtrl.$inject = ['$scope', '$state', '$mdDialog', 'UsuariosService', 'AlertService'];
 
-    UsuariosCtrl.controller("usuariosCtrl", function($scope, $state, $mdDialog, UsuariosService, AlertService, CommonService){
+    UsuariosCtrl.controller("usuariosCtrl", function($scope, $state, $mdDialog, UsuariosService, AlertService){
         var vm = this;
         
         vm.user = {};
@@ -19,7 +19,6 @@
 
         function init(){
             get();
-            CommonService.getUserId() != "59178793d84eab37f8ec7a81" ? $state.go('home') : null;
         }
 
         function get() {

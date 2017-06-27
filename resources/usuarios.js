@@ -13,11 +13,14 @@ module.exports = function(app) {
   });
   
   app.post('/api/usuarios', function(req, resp) {
-    usuarioModel.create(req.body)
-      .then(function(dado) {
-        resp.json(dado);
-      }, function(erro) {
-        resp.status(500).json(erro);
+    usuarioModel.find().then(function(usuario){
+      req.body.admin = usuario.length  ? false : true;
+      usuarioModel.create(req.body)
+        .then(function(dado) {
+          resp.json(dado);
+        }, function(erro) {
+          resp.status(500).json(erro);
+        });
       });
   });
   

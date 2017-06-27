@@ -44,7 +44,7 @@
                             <div ng-messages="form.login.$error">
                                 <div ng-message="required">Este campo é obrigatório.</div>
                                 <div ng-message="minlength">O login deve conter no mínimo 5 caracteres.</div>
-                                <div ng-if="vm.loginInvalid && form.login.$valid">Este login já esta em uso.</div>
+                                <div ng-if="vm.loginInvalid && !form.login.$valid">Este login já esta em uso.</div>
                             </div>
                         </md-input-container>
                     </div>
@@ -71,7 +71,7 @@
                         </md-input-container>
                     </div>-->
                     <div flex>
-                        <md-button type="submit" ng-click="vm.register()" ng-disabled="form.$invalid"class="md-raised md-primary">Entrar</md-button>
+                        <md-button type="submit" ng-click="vm.register()" ng-disabled="form.$invalid"class="md-raised md-primary">Cadastrar</md-button>
                     </div>
                 </form>
             </div>

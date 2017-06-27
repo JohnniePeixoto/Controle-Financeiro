@@ -13,15 +13,41 @@
                 data: []
             };  
         
+        var theHelp = Chart.helpers; //just for generateLabels work
         vm.options = {
             legend: {
                 display: true, 
                 position: 'bottom',
-                fullWidth: true
+                fullWidth: true,
+                labels: {
+                    generateLabels: function(chart){
+                        var data = chart.data;
+                        if (data.labels.length && data.datasets.length) {
+                            return data.labels.map(function(label, i) {
+                                var meta = chart.getDatasetMeta(0);
+                                var ds = data.datasets[0];
+                                var arc = meta.data[i];
+                                var custom = arc && arc.custom || {};
+                                var getValueAtIndexOrDefault = theHelp.getValueAtIndexOrDefault;
+                                var arcOpts = chart.options.elements.arc;
+                                var fill = custom.backgroundColor ? custom.backgroundColor : getValueAtIndexOrDefault(ds.backgroundColor, i, arcOpts.backgroundColor);
+                                var stroke = custom.borderColor ? custom.borderColor : getValueAtIndexOrDefault(ds.borderColor, i, arcOpts.borderColor);
+                                var bw = custom.borderWidth ? custom.borderWidth : getValueAtIndexOrDefault(ds.borderWidth, i, arcOpts.borderWidth);
+                                return {
+                                    // And finally : 
+                                    text: currencyTransform(ds.data[i]) + " - " + label,
+                                    fillStyle: fill,
+                                    strokeStyle: stroke,
+                                    lineWidth: bw,
+                                    hidden: isNaN(ds.data[i]) || meta.data[i].hidden,
+                                    index: i
+                                };
+                            });
+                        }
+                        return [];
+                    }
+                }
             },
-            legendCallback: function(chart){
-                    console.log('HEY', chart);
-                },
             tooltips: {
                 callbacks: {
                     title: function(tooltipItem, data) {
@@ -125,10 +151,6 @@
                 return dateTransform(date);
             })
             chart.data = chart.data.slice().reverse();
-            // chart.data = _.map(chart.data, function(curr){
-            //     return currencyTransform(curr);
-            // })
-            // console.log(chart.data);
             return chart;
         }
 

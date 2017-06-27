@@ -6,7 +6,7 @@
                 <li role="presentation" ui-sref-active="active"><a ui-sref="home">Visão Geral</a></li>
                 <li role="presentation" ui-sref-active="active"><a ui-sref="movimentacoesList">Movimentações</a></li>
                 <li role="presentation" ui-sref-active="active"><a ui-sref="categorias">Categorias</a></li>
-                <li ng-if="vm.isAdmin()" role="presentation" ui-sref-active="active"><a ui-sref="usuarios">Usuários</a></li>
+                <li ng-if="vm.admin() === 'true'" role="presentation" ui-sref-active="active"><a ui-sref="usuarios">Usuários</a></li>
                 <li role="presentation" ui-sref-active="active" title="Sair">
                     <a ui-sref="logout" ng-click="vm.logout()">
                         <i class="glyphicon glyphicon-off" aria-hidden="true"></i>

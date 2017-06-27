@@ -29,8 +29,7 @@ module.exports = function (app) {
                 );
                 resp.set('Authorization', token);
                 resp.set('userId', usuario._id);
-                // console.log('Usuario logado: '+usuario._id);
-                resp.send();
+                resp.send({usuario: usuario});
             }
         }, errorFunction(resp));
     });
@@ -58,7 +57,6 @@ module.exports = function (app) {
         model.findOne({
             login: req.body.login
         }).then(function (usuario) {
-            // console.log(usuario);
             if (!usuario) {
                 resp.status(200).send({
                     message: 'Login disponível'
