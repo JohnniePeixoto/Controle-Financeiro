@@ -64,8 +64,8 @@
         
         function _removeError(e) {
             var msg = 'Erro ao remover o registro';
-            console.log(e);
-            return toastr(msg, 'error');
+            var text = e ? e : msg;
+            return toastr(text, 'error');
         }
         
         

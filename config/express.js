@@ -7,7 +7,7 @@ var app = express();
 app.use(express.static('./app/'));
 app.use(bodyParser.json());
 
-app.set('secret', 'fuckthisshit');
+app.set('secret', 'johnniepeixoto');
 
 consign()
   .include('modelos')

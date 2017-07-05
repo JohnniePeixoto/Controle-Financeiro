@@ -16,6 +16,5 @@
                     vm.message = "Usuário ou senha incorretos";
                 });
         }
-
     })
 })();

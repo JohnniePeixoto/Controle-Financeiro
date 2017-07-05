@@ -1,5 +1,5 @@
 function _erroDuplicidade(res,err) {
-    return Error('Não é possivel excluir, este item esta vinculado a outros registros');
+    return 'Não é possivel excluir, este item esta vinculado a outros registros';
 }
 
 var ErrorHandler = {

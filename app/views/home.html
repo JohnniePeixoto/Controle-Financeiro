@@ -4,6 +4,7 @@
         <h2>Visão Geral</h2>
         <div class="row">
             <div class="md-col-6 md-whiteframe-10dp md-padding">
+                <span class="text-info" ng-if="!vm.ondas.data"><h3>Aqui você terá uma visão geral de suas receitas e despesas, comece cadastrando-as na tela de Movimentações.</h3></span>
                 <canvas 
                     id="line"
                     height="80"
@@ -18,7 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="md-col-6 pull-left md-whiteframe-10dp md-padding">
+            <div class="md-col-6 pull-left md-whiteframe-10dp md-padding" ng-if="vm.despesas.data">
                 <h4 class="panel-header">Despesas</h4>
                 <canvas 
                     id="despesas"
@@ -27,12 +28,11 @@
                     chart-data="vm.despesas.data" 
                     chart-labels="vm.despesas.labels" 
                     chart-colors="vm.despesas.colors"
-                    chart-options="vm.options"
-                    ng-if="vm.despesas.data">
+                    chart-options="vm.options">
                 </canvas>
                 <span class="text-info" ng-if="!vm.despesas.data">Cadastre movimentações para que o gráfico seja exibido.</span>
             </div>
-            <div class="md-col-6 pull-right md-whiteframe-10dp md-padding">
+            <div class="md-col-6 pull-right md-whiteframe-10dp md-padding" ng-if="vm.receitas.data">
                 <h4 class="panel-header">Receitas</h4>
                 <canvas 
                     id="receitas"
@@ -40,8 +40,7 @@
                     class="chart chart-pie"
                     chart-data="vm.receitas.data" 
                     chart-labels="vm.receitas.labels"
-                    chart-options="vm.options"
-                    ng-if="vm.receitas.data">
+                    chart-options="vm.options">
                 </canvas>
                 <span class="text-info" ng-if="!vm.receitas.data">Cadastre movimentações para que o gráfico seja exibido.</span>
             </div>
