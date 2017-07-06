@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <label for="valor" class="control-label col-sm-2">Descrição *</label>
+                        <label for="valor" class="control-label col-sm-2" title="Campo obrigatório">Descrição <span class="text-danger">*</span></label>
                         <div class="col-sm-10">
                             <input ng-model="vm.movimentacao.descricao" type="text" class="form-control" id="descricao" required>
                         </div>
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <label for="valor" class="control-label col-sm-2">Valor</label>
+                        <label for="valor" class="control-label col-sm-2" title="Campo obrigatório">Valor <span class="text-danger">*</span></label>
                         <div class="input-group col-sm-10">
                             <span class="input-group-addon">R$</span>
                             <input ng-model="vm.movimentacao.valor" type="text" class="form-control" id="valor" ui-number-mask required>
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <label for="data" class="control-label col-sm-2">Data</label>
+                        <label for="data" class="control-label col-sm-2" title="Campo obrigatório">Data <span class="text-danger">*</span></label>
                         <div class="input-group col-sm-10">
                             <!--<input ng-model="vm.movimentacao.data" type="text" class="form-control" id="data" required>-->
                             <span class="input-group-btn">
@@ -116,7 +116,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <label for="categoria" class="control-label col-sm-2">Categoria</label>
+                        <label for="categoria" class="control-label col-sm-2" title="Campo obrigatório">Categoria <span class="text-danger">*</span></label>
                         <div class="col-sm-10" ng-controller="categoriasCtrl as vmCat">
                             <select ng-model="vm.movimentacao.i_categoria" class="form-control" id="categoria" required>
                                 <option ng-repeat="item in vmCat.lista" value="{{item._id}}">{{item.descricao}}</option>
