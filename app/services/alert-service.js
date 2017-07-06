@@ -51,8 +51,7 @@
         }
 
         function _insertError(e) {
-            var msg = 'Erro ao cadastrar registro';
-            console.log(e);
+            var msg = e ? e : 'Erro ao cadastrar registro';
             return toastr(msg, 'error');
         }
 

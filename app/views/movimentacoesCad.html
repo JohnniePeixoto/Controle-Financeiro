@@ -34,7 +34,7 @@
                     <div class="col-sm-offset-2 col-sm-8">
                         <label for="frequencia" class="control-label col-sm-2">Frequência</label>
                         <div class="col-sm-10">
-                            <select ng-model="vm.movimentacao.frequencia" class="form-control" id="frequencia">
+                            <select class="form-control" id="frequencia">
                                 <option value="d">Dia</option>
                                 <option value="s">Semana</option>
                                 <option value="m">Mês</option>
@@ -51,7 +51,7 @@
                         <div if="tipoFrequencia == 'parcela'">
                             <label for="parcelas" class="control-label col-sm-2" >Número de Parcelas</label>
                             <div class="col-sm-10">
-                                <input ng-model="vm.movimentacao.qtdParcelas" type="text" class="form-control col-sm-2" id="parcelas">
+                                <input type="text" class="form-control col-sm-2" id="parcelas">
                             </div>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-8">
-                        <label for="valor" class="control-label col-sm-2">Descrição</label>
+                        <label for="valor" class="control-label col-sm-2">Descrição *</label>
                         <div class="col-sm-10">
                             <input ng-model="vm.movimentacao.descricao" type="text" class="form-control" id="descricao" required>
                         </div>

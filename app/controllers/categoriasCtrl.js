@@ -34,7 +34,7 @@
                 vm.categoria = {};
                 get();
             }, function(err){
-                AlertService.insertError(err);
+                AlertService.insertError(err.data.errors.descricao.message);
             });
         }
 
